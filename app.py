@@ -1,40 +1,56 @@
-"""  Copyright 2019 Esri
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License. """
-
-from flask import Flask, request
-from OpenSSL import SSL
+from fastapi import FastAPI, HTTPException, Body, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
+from typing import List
+from pydantic import BaseModel, Field
+from datetime import datetime
+import uuid
+from typing import Dict, Any
+from datetime import datetime
 import os
-import json
+import arcgis, arcpy
+from io import BytesIO
+from PIL import Image
+from Hackathon_garbage_detection import classify
+from trace_downhill_auto import trace_downhill
 
-filename = r'C:\Users\mic13403\Documents\webhook\webhookPayloads.txt' #file that webhook payloads will be written
+app = FastAPI()
+#app.mount("/", StaticFiles(directory="mini_site"), name= "static")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
-if os.path.exists(filename):
-	append_write = 'a' # append if already exists
-else:
-	append_write = 'w' # make a new file if not
+apiKey = "AAPKa37c22c6b6c341fcb6ae778e549ce9a7mS25Zx51QFR2KwEaovAIf_Hcv9A73_d-D0464D3E_bFFowZXMK57ksjrzPNh4ofc"
+gis = GIS(apiKey)
 
-app = Flask(__name__)
+class QuickCapture(BaseModel):
+    pass
 
-@app.route('/hack', methods=['POST','GET'])
-def index():
-	if request.method == 'GET':
-			return '<h1>Hello from Webhook Listener!</h1>'
-	if request.method == 'POST':
-			f = open(filename,append_write)
-			req_data = request.get_json()
-			str_obj = json.dumps(req_data)
-			f.write(str_obj+'\n')
-			f.close()
-			return '{"success":"true"}'
+@app.post("/hack")
+async def run_script(quick_capture: Dict):
+    
+    ###------ Classification ------###
+    classified = classify(quick_capture["URL"])    
 
-if __name__ == "__main__":   
-	#context = ('ssl.cert', 'ssl.key') # certificate and key file. Cannot be self signed certs    
-	app.run(host='0.0.0.0', port=5000, threaded=True, debug=True) # will listen on port 5000
+    # Add field and value to attribute table 
+    feature_layer_item = gis.content.get('92e5e33078b9459f898741cc94c057fc')
+    feature_layer = FeatureLayer.fromitem(feature_layer_item)
+    field = {
+        'name': 'Recyclable',
+        'type': 'esriFieldTypeString',
+        'length': 100
+    }
+    feature_layer.manager.add_to_definition({'fields': [field]})
+    features = feature_layer.query(where='1=1', order_by_fields='Date and time of sighting', out_fields='*', return_geometry=True, return_all_records=False, result_record_count=1)
+    
+    features[0].attributes['Recyclable'] = classified    
+    feature_layer.edit_features(updates=features)
+
+    ###------ TraceDownhill Automation ------###
+    trace_downhill()
+
+

@@ -1,0 +1,692 @@
+{
+    "name": "Integration QuickCapture",
+    "flow": [
+        {
+            "id": 1,
+            "module": "quickcapture:WatchProject",
+            "version": 1,
+            "parameters": {
+                "__IMTHOOK__": 707029
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTHOOK__": {
+                            "label": "My Project Feature webhook",
+                            "data": {
+                                "editable": "false"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTHOOK__",
+                        "type": "hook:quickcapture",
+                        "label": "Webhook",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "portalInfo",
+                        "type": "collection",
+                        "label": "Portal Info",
+                        "spec": [
+                            {
+                                "name": "token",
+                                "type": "text",
+                                "label": "Token"
+                            },
+                            {
+                                "name": "url",
+                                "type": "text",
+                                "label": "Portal Url"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "userInfo",
+                        "type": "collection",
+                        "label": "User Info",
+                        "spec": [
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "firstName",
+                                "type": "text",
+                                "label": "First Name"
+                            },
+                            {
+                                "name": "lastName",
+                                "type": "text",
+                                "label": "Last Name"
+                            },
+                            {
+                                "name": "fullName",
+                                "type": "text",
+                                "label": "Full Name"
+                            },
+                            {
+                                "name": "username",
+                                "type": "text",
+                                "label": "Username"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "feature",
+                        "type": "collection",
+                        "label": "Feature",
+                        "spec": [
+                            {
+                                "name": "attributes",
+                                "type": "collection",
+                                "label": "Attributes",
+                                "spec": [
+                                    {
+                                        "name": "esrignsss_speed",
+                                        "type": "text",
+                                        "label": "Speed (km/h)"
+                                    },
+                                    {
+                                        "name": "esrignss_direction",
+                                        "type": "text",
+                                        "label": "Direction of travel (°)"
+                                    },
+                                    {
+                                        "name": "esriqsnsr_azimuth",
+                                        "type": "text",
+                                        "label": "Compass reading (°)"
+                                    },
+                                    {
+                                        "name": "esrignss_positionsourcetype",
+                                        "type": "text",
+                                        "label": "Position source type"
+                                    },
+                                    {
+                                        "name": "esrignss_receiver",
+                                        "type": "text",
+                                        "label": "Receiver Name"
+                                    },
+                                    {
+                                        "name": "esrignss_h_rms",
+                                        "type": "text",
+                                        "label": "Horizontal Accuracy (m)"
+                                    },
+                                    {
+                                        "name": "esrignss_v_rms",
+                                        "type": "text",
+                                        "label": "Vertical Accuracy (m)"
+                                    },
+                                    {
+                                        "name": "esrignss_latitude",
+                                        "type": "text",
+                                        "label": "Latitude"
+                                    },
+                                    {
+                                        "name": "esrignss_longitude",
+                                        "type": "text",
+                                        "label": "Longitude"
+                                    },
+                                    {
+                                        "name": "esrignss_altitude",
+                                        "type": "text",
+                                        "label": "Altitude"
+                                    },
+                                    {
+                                        "name": "esrignss_pdop",
+                                        "type": "text",
+                                        "label": "PDOP"
+                                    },
+                                    {
+                                        "name": "esrignss_hdop",
+                                        "type": "text",
+                                        "label": "HDOP"
+                                    },
+                                    {
+                                        "name": "esrignss_vdop",
+                                        "type": "text",
+                                        "label": "VDOP"
+                                    },
+                                    {
+                                        "name": "esrignss_fixtype",
+                                        "type": "text",
+                                        "label": "Fix Type"
+                                    },
+                                    {
+                                        "name": "esrignss_correctionage",
+                                        "type": "text",
+                                        "label": "Correction Age"
+                                    },
+                                    {
+                                        "name": "esrignss_stationid",
+                                        "type": "text",
+                                        "label": "Station ID"
+                                    },
+                                    {
+                                        "name": "esrignss_numsats",
+                                        "type": "text",
+                                        "label": "Number of Satellites"
+                                    },
+                                    {
+                                        "name": "esrignss_fixdatetime",
+                                        "type": "text",
+                                        "label": "Fix Time"
+                                    },
+                                    {
+                                        "name": "esrignss_avg_h_rms",
+                                        "type": "text",
+                                        "label": "Average Horizontal Accuracy (m)"
+                                    },
+                                    {
+                                        "name": "esrignss_avg_v_rms",
+                                        "type": "text",
+                                        "label": "Average Vertical Accuracy (m)"
+                                    },
+                                    {
+                                        "name": "esrignss_avg_positions",
+                                        "type": "text",
+                                        "label": "Averaged Positions"
+                                    },
+                                    {
+                                        "name": "esrignss_h_stddev",
+                                        "type": "text",
+                                        "label": "Standard Deviation (m)"
+                                    },
+                                    {
+                                        "name": "capture_time",
+                                        "type": "text",
+                                        "label": "Capture time"
+                                    },
+                                    {
+                                        "name": "users",
+                                        "type": "text",
+                                        "label": "Username"
+                                    },
+                                    {
+                                        "name": "road_debris",
+                                        "type": "text",
+                                        "label": "Debris"
+                                    },
+                                    {
+                                        "name": "app_version",
+                                        "type": "text",
+                                        "label": "App version"
+                                    },
+                                    {
+                                        "name": "operating_system",
+                                        "type": "text",
+                                        "label": "Operating system"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "geometry",
+                                "type": "collection",
+                                "label": "Geometry",
+                                "spec": [
+                                    {
+                                        "name": "spatialReference",
+                                        "type": "collection",
+                                        "label": "Spatial Reference",
+                                        "spec": [
+                                            {
+                                                "name": "wkid",
+                                                "type": "number",
+                                                "label": "WKID"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "x",
+                                        "label": "x",
+                                        "type": "number"
+                                    },
+                                    {
+                                        "name": "y",
+                                        "label": "y",
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "result",
+                                "type": "collection",
+                                "label": "Result Info",
+                                "spec": [
+                                    {
+                                        "name": "globalId",
+                                        "label": "Global Id",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "objectId",
+                                        "label": "Object Id",
+                                        "type": "number"
+                                    },
+                                    {
+                                        "name": "success",
+                                        "label": "Success",
+                                        "type": "boolean"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "layerInfo",
+                                "type": "collection",
+                                "label": "Layer Info",
+                                "spec": [
+                                    {
+                                        "name": "id",
+                                        "label": "Id",
+                                        "type": "number"
+                                    },
+                                    {
+                                        "name": "name",
+                                        "label": "Layer name",
+                                        "type": "text"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "attachmentInfo",
+                        "label": "Attachment Info",
+                        "type": "collection",
+                        "spec": [
+                            {
+                                "name": "photo",
+                                "label": "Photo",
+                                "type": "array",
+                                "spec": {
+                                    "type": "collection",
+                                    "spec": [
+                                        {
+                                            "name": "id",
+                                            "label": "Id",
+                                            "type": "number"
+                                        },
+                                        {
+                                            "name": "globalId",
+                                            "label": "Global Id",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "name",
+                                            "label": "Name",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "contentType",
+                                            "label": "Content Type",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "size",
+                                            "label": "Size",
+                                            "type": "number"
+                                        },
+                                        {
+                                            "name": "keywords",
+                                            "label": "Keywords",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "exifInfo",
+                                            "label": "exifInfo",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "url",
+                                            "label": "URL",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "name": "parentObjectId",
+                                            "label": "Parent Object Id",
+                                            "type": "number"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "response",
+                        "label": "Response",
+                        "type": "array",
+                        "spec": {
+                            "type": "collection",
+                            "spec": [
+                                {
+                                    "name": "id",
+                                    "type": "number"
+                                },
+                                {
+                                    "name": "addResults",
+                                    "type": "array",
+                                    "spec": {
+                                        "type": "collection",
+                                        "spec": [
+                                            {
+                                                "name": "globalId",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "name": "objectId",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "name": "success",
+                                                "type": "boolean"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "projectInfo",
+                        "type": "collection",
+                        "label": "Project Info",
+                        "spec": [
+                            {
+                                "name": "projectItemId",
+                                "type": "text",
+                                "label": "Project Item Id"
+                            },
+                            {
+                                "name": "projectTitle",
+                                "type": "text",
+                                "label": "Project Title"
+                            },
+                            {
+                                "name": "serviceUrl",
+                                "type": "text",
+                                "label": "Feature Service Url"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "http:ActionSendData",
+            "version": 3,
+            "parameters": {
+                "handleErrors": false,
+                "useNewZLibDeCompress": true
+            },
+            "mapper": {
+                "url": "http://10.59.61.114:8000/hack",
+                "serializeUrl": false,
+                "method": "post",
+                "headers": [],
+                "qs": [],
+                "bodyType": "x_www_form_urlencoded",
+                "parseResponse": true,
+                "authUser": "",
+                "authPass": "",
+                "timeout": "",
+                "shareCookies": false,
+                "ca": "",
+                "rejectUnauthorized": false,
+                "followRedirect": true,
+                "useQuerystring": false,
+                "gzip": true,
+                "useMtls": false,
+                "formFields": [],
+                "followAllRedirects": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "method": {
+                            "mode": "chose",
+                            "label": "POST"
+                        },
+                        "headers": {
+                            "mode": "chose"
+                        },
+                        "qs": {
+                            "mode": "chose"
+                        },
+                        "bodyType": {
+                            "label": "Application/x-www-form-urlencoded"
+                        },
+                        "formFields": {
+                            "mode": "chose"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "handleErrors",
+                        "type": "boolean",
+                        "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                        "required": true
+                    },
+                    {
+                        "name": "useNewZLibDeCompress",
+                        "type": "hidden"
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "url",
+                        "type": "url",
+                        "label": "URL",
+                        "required": true
+                    },
+                    {
+                        "name": "serializeUrl",
+                        "type": "boolean",
+                        "label": "Serialize URL",
+                        "required": true
+                    },
+                    {
+                        "name": "method",
+                        "type": "select",
+                        "label": "Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "get",
+                                "head",
+                                "post",
+                                "put",
+                                "patch",
+                                "delete",
+                                "options"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "headers",
+                        "type": "array",
+                        "label": "Headers",
+                        "spec": [
+                            {
+                                "name": "name",
+                                "label": "Name",
+                                "type": "text",
+                                "required": true
+                            },
+                            {
+                                "name": "value",
+                                "label": "Value",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "qs",
+                        "type": "array",
+                        "label": "Query String",
+                        "spec": [
+                            {
+                                "name": "name",
+                                "label": "Name",
+                                "type": "text",
+                                "required": true
+                            },
+                            {
+                                "name": "value",
+                                "label": "Value",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "bodyType",
+                        "type": "select",
+                        "label": "Body type",
+                        "validate": {
+                            "enum": [
+                                "raw",
+                                "x_www_form_urlencoded",
+                                "multipart_form_data"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "parseResponse",
+                        "type": "boolean",
+                        "label": "Parse response",
+                        "required": true
+                    },
+                    {
+                        "name": "authUser",
+                        "type": "text",
+                        "label": "User name"
+                    },
+                    {
+                        "name": "authPass",
+                        "type": "password",
+                        "label": "Password"
+                    },
+                    {
+                        "name": "timeout",
+                        "type": "uinteger",
+                        "label": "Timeout",
+                        "validate": {
+                            "max": 300,
+                            "min": 1
+                        }
+                    },
+                    {
+                        "name": "shareCookies",
+                        "type": "boolean",
+                        "label": "Share cookies with other HTTP modules",
+                        "required": true
+                    },
+                    {
+                        "name": "ca",
+                        "type": "cert",
+                        "label": "Self-signed certificate"
+                    },
+                    {
+                        "name": "rejectUnauthorized",
+                        "type": "boolean",
+                        "label": "Reject connections that are using unverified (self-signed) certificates",
+                        "required": true
+                    },
+                    {
+                        "name": "followRedirect",
+                        "type": "boolean",
+                        "label": "Follow redirect",
+                        "required": true
+                    },
+                    {
+                        "name": "useQuerystring",
+                        "type": "boolean",
+                        "label": "Disable serialization of multiple same query string keys as arrays",
+                        "required": true
+                    },
+                    {
+                        "name": "gzip",
+                        "type": "boolean",
+                        "label": "Request compressed content",
+                        "required": true
+                    },
+                    {
+                        "name": "useMtls",
+                        "type": "boolean",
+                        "label": "Use Mutual TLS",
+                        "required": true
+                    },
+                    {
+                        "name": "formFields",
+                        "type": "array",
+                        "label": "Fields",
+                        "spec": [
+                            {
+                                "name": "key",
+                                "label": "Key",
+                                "type": "text",
+                                "required": true
+                            },
+                            {
+                                "name": "value",
+                                "label": "Value",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "followAllRedirects",
+                        "type": "boolean",
+                        "label": "Follow all redirect",
+                        "required": true
+                    }
+                ],
+                "advanced": true
+            }
+        },
+        {
+            "id": null,
+            "module": "placeholder:Placeholder",
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                }
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us1.make.com"
+    }
+}

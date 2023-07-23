@@ -7,7 +7,7 @@ from arcgis.features import FeatureSet, Feature
 def trace_downhill():
     apiKey = "AAPKa37c22c6b6c341fcb6ae778e549ce9a7mS25Zx51QFR2KwEaovAIf_Hcv9A73_d-D0464D3E_bFFowZXMK57ksjrzPNh4ofc"
     gis = GIS(apiKey)
-    feature_layer_item = gis.content.get('92e5e33078b9459f898741cc94c057fc') # ID of feature layer
+    feature_layer_item = gis.content.get('9e089f121b604bf8ab21826c65a291cd') # ID of trace downhill feature layer
 
     feature_layer = feature_layer_item.layers[0]
     print(feature_layer)
